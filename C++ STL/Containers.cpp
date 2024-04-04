@@ -357,8 +357,12 @@ void stlMap()
     // mpp.emplace({2, 3});
     mpp.insert({4, 7});
     mpp.insert({3, 7});
+    for (auto it = mpp.begin(); it != mpp.end(); ++it)
+    {
+        cout << it->second << endl;
+    }
 
-    auto it = mpp.find(8);
+    auto it = mpp.find(4);
     if (it != mpp.end())
     {
         cout << it->second << endl;
