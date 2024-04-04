@@ -349,6 +349,28 @@ void stlSet()
     // }
 }
 
+void stlMap()
+{ //
+    map<int, int> mpp;
+
+    mpp[1] = 6;
+    // mpp.emplace({2, 3});
+    mpp.insert({4, 7});
+    mpp.insert({3, 7});
+
+    auto it = mpp.find(8);
+    if (it != mpp.end())
+    {
+        cout << it->second << endl;
+    }
+    else
+    {
+        cout << "key not present";
+    }
+
+    // cout << mpp[1];
+}
+
 int main()
 {
     // stlPairs();
@@ -358,5 +380,6 @@ int main()
     // stlStack();
     // stlQueue();
     // stlPriorityQueue();
-    stlSet();
+    // stlSet();
+    stlMap();
 }
