@@ -302,6 +302,53 @@ void stlPriorityQueue()
     intPQ.pop();
     cout << intPQ.top() << "\n";
 }
+
+void stlSet()
+{
+    set<int> intSet;
+    intSet.insert(2);
+    intSet.insert(2);
+    intSet.insert(14);
+    intSet.emplace(2);
+    intSet.emplace(7);
+    intSet.emplace(4);
+    intSet.emplace(1);
+    intSet.emplace(0);
+
+    for (auto it : intSet)
+    {
+        cout << it << " ";
+    }
+
+    cout << endl;
+    auto it = intSet.find(14);
+    cout << typeid(it).name();
+    cout << "\n"
+         << *it;
+
+    auto it1 = intSet.find(5); // returns garbage address
+    cout << "\n"
+         << *it1 << " "
+         << *intSet.end();
+
+    cout << "\n"
+         << intSet.size();
+
+    auto it2 = intSet.find(2);
+    auto it3 = intSet.find(14);
+
+    intSet.erase(it2, it3++);
+    cout << "\n";
+    for (auto it : intSet)
+    {
+        cout << it << " ";
+    }
+
+    // for (set<int>::iterator i = intSet.begin(); i < intSet.end(); i++)
+    // {
+    // }
+}
+
 int main()
 {
     // stlPairs();
@@ -310,5 +357,6 @@ int main()
     // stlDeque();
     // stlStack();
     // stlQueue();
-    stlPriorityQueue();
+    // stlPriorityQueue();
+    stlSet();
 }
