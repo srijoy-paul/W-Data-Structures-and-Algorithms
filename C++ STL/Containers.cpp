@@ -51,12 +51,18 @@ void stlVectors()
     cout << endl
          << "Float vector ";
     vector<float> floatVector(8);
-    floatVector[0] = 1.3;
-    floatVector[1] = 1.2;
-    floatVector[2] = 1.4;
-    floatVector[3] = 1.5;
-    floatVector[7] = 1.1;
-    vector<float>::iterator it = floatVector.begin(); // iterator for vectors/ vector arrays
+    floatVector[0] = 7;
+    floatVector[1] = 6;
+    floatVector[2] = 5;
+    floatVector[3] = 4;
+    floatVector[4] = 3;
+    floatVector[5] = 2;
+    floatVector[6] = 1;
+    // floatVector[7] = 3;
+    vector<float>::iterator it = floatVector.begin();
+    reverse(floatVector.begin(), floatVector.begin() + 3); // second parameter is excluded
+    // cout << "checking the begin and end: " << *(floatVector.begin() + 3) << endl;
+    // iterator for vectors/ vector arrays
     // cout << *it << " ";
     // it++;
     // cout << *it << " ";
@@ -185,6 +191,9 @@ void stlVectors()
     // checks the vec is empty or not - returns 1 for true and 0 for false.
     cout << endl;
     cout << s2.empty();
+
+    vector<int> test;
+    cout << "\n Testing: " << *test.end();
 }
 
 void stlLists()
