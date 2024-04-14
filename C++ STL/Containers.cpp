@@ -193,7 +193,17 @@ void stlVectors()
     cout << s2.empty();
 
     vector<int> test;
-    cout << "\n Testing: " << *test.end();
+    // cout << "\n Testing: " << *test.end();
+
+    vector<vector<int>> test2d;
+    test2d[0][0] = 1;
+    test2d[0][1] = 0;
+    test2d[0][2] = 1;
+    test2d[1][0] = 0;
+    test2d[1][1] = 0;
+    test2d[1][2] = 1;
+    cout << endl
+         << "test2d" << test2d.size();
 }
 
 void stlLists()
@@ -387,12 +397,12 @@ void stlMap()
 int main()
 {
     // stlPairs();
-    // stlVectors();
+    stlVectors();
     // stlLists();
     // stlDeque();
     // stlStack();
     // stlQueue();
     // stlPriorityQueue();
     // stlSet();
-    stlMap();
+    // stlMap();
 }
