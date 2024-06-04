@@ -70,6 +70,9 @@ public:
         zero->next = oneHead->next ? oneHead->next : twoHead->next;
         one->next = twoHead->next;
         two->next = NULL;
+        free(zeroHead);
+        free(oneHead);
+        free(twoHead);
         return zeroHead->next;
     }
 };
