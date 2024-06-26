@@ -1,15 +1,53 @@
-vector<int> Solution::prevSmaller(vector<int> &A)
+//{ Driver Code Starts
+// Initial Template for C++
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+// User function Template for C++
+
+class Solution
 {
-    vector<int> ans(A.size(), -1);
-    stack<int> st;
-    for (int i = A.size() - 1; i >= 0; i--)
+public:
+    vector<int> leftSmaller(int n, int A[])
     {
-        while (!st.empty() && A[i] < A[st.top()])
+        // code here
+        vector<int> ans(n, -1);
+        stack<int> st;
+        for (int i = n - 1; i >= 0; i--)
         {
-            ans[st.top()] = A[i];
-            st.pop();
+            while (!st.empty() && A[i] < A[st.top()])
+            {
+                ans[st.top()] = A[i];
+                st.pop();
+            }
+            st.push(i);
         }
-        st.push(i);
+        return ans;
     }
-    return ans;
+};
+
+//{ Driver Code Starts.
+
+int main()
+{
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int n;
+        cin >> n;
+        int a[n];
+        for (int i = 0; i < n; i++)
+            cin >> a[i];
+
+        Solution ob;
+        vector<int> ans = ob.leftSmaller(n, a);
+        for (int i = 0; i < n; i++)
+            cout << ans[i] << " ";
+        cout << endl;
+    }
+    return 0;
 }
+// } Driver Code Ends
