@@ -14,6 +14,7 @@ public:
             {
                 while (!d.empty() && nums[i] > nums[d.back()])
                     d.pop_back();
+
                 d.push_back(i);
             }
         }
