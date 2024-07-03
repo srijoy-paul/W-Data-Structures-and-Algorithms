@@ -43,10 +43,59 @@ public:
             cout << arr[i] << endl;
         }
     }
+
+    void Heapify(int index)
+    {
+        int largest = index;
+        int left = 2 * index + 1;
+        int right = 2 * index + 2;
+
+        if (left < size && arr[left] > arr[largest])
+        {
+            largest = left;
+        }
+        if (right < size && arr[right] > arr[largest])
+        {
+            largest = right;
+        }
+        if (largest != index)
+        {
+            swap(arr[index], arr[largest]);
+            Heapify(largest);
+        }
+        return;
+    }
+
+    void delete_node()
+    {
+        if (size == 0)
+        {
+            cout << "Heap underflow";
+            return;
+        }
+
+        cout << "deleted" << endl;
+        arr[0] = arr[size - 1];
+        size--;
+        if (size == 0)
+        {
+            return;
+        }
+        Heapify(0);
+        return;
+    }
 };
 
 int main()
 {
     MaxHeap h1(7);
     h1.insert(42);
+    h1.insert(27);
+    h1.insert(33);
+    h1.insert(37);
+    h1.insert(50);
+    h1.insert(80);
+    h1.insert(20);
+    // h1.insert(100);
+    h1.print();
 }
