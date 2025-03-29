@@ -209,17 +209,157 @@ int calFactorialRecur(int n)
         return 1;
     return n * calFactorialRecur(n - 1);
 }
+// int main()
+// {
+//     int noOfPeople, seats;
+//     cin >> noOfPeople >> seats;
+
+//     if (seats > noOfPeople)
+//     {
+//         cout << "Invalid input: According to concept of Permutation r should be less than or equal to n." << endl;
+//         return 0;
+//     }
+//     int perms = (calFactorialRecur(noOfPeople) / (calFactorialRecur(noOfPeople - seats)));
+
+//     cout << perms;
+// }
+
+// combinations
+//  int main()
+//  {
+//      int numOfPeople, handshake = 2;
+//      cin >> numOfPeople;
+
+//     int combsPossible = (calFactorialRecur(numOfPeople) / (calFactorialRecur(handshake) * (calFactorialRecur(numOfPeople - handshake))));
+
+//     cout << "no of handshakes:" << combsPossible;
+// }
+
+int calLcm(int n1, int n2)
+{
+    int small, big;
+    if (n1 < n2)
+    {
+        small = n1;
+        big = n2;
+    }
+    else
+    {
+        small = n2;
+        big = n1;
+    }
+
+    int i = 1;
+    while (1)
+    {
+        if ((big * i) % small == 0)
+        {
+            return (big * i);
+            break;
+        }
+        i++;
+    }
+}
+
+vector<int> calFactors(int n)
+{
+    vector<int> temp;
+    temp.emplace_back(1);
+    for (int i = 2; i <= n / 2; i++)
+    {
+        if (n % i == 0)
+        {
+            // cout << i;
+            temp.emplace_back(i);
+        }
+    }
+    temp.emplace_back(n);
+    return temp;
+}
+
+int calHcf(int n1, int n2)
+{
+    int small, big;
+    if (n1 < n2)
+    {
+        small = n1;
+        big = n2;
+    }
+    else
+    {
+        small = n2;
+        big = n1;
+    }
+    vector<int> factors = calFactors(small);
+    for (int i = factors.size() - 1; i >= 0; i--)
+    {
+        if (big % factors[i] == 0)
+        {
+            return factors[i];
+        }
+    }
+    return 1;
+}
+
+// int main()
+// {
+//     int nume1, deno1, nume2, deno2;
+//     cin >> nume1 >> deno1 >> nume2 >> deno2;
+
+//     int lcm = calLcm(deno1, deno2);
+
+//     int mulTonume1 = lcm / deno1;
+//     nume1 *= mulTonume1;
+
+//     int mulTonume2 = lcm / deno2;
+//     nume2 *= mulTonume2;
+
+//     int updatedNume = nume1 + nume2;
+
+//     cout << updatedNume << "/" << lcm << endl;
+
+//     while (calHcf(updatedNume, lcm) != 1)
+//     {
+//         int divisibleBy = calHcf(updatedNume, lcm);
+//         updatedNume /= divisibleBy;
+//         lcm /= divisibleBy;
+//     }
+
+//     cout << "simplified: " << updatedNume << "/" << lcm;
+// }
+
 int main()
 {
-    int noOfPeople, seats;
-    cin >> noOfPeople >> seats;
+    cout << "Enter the value of a, b, c of any quad eq.:";
+    int a, b, c;
+    cin >> a >> b >> c;
 
-    if (seats > noOfPeople)
+    int root1, root2;
+    bool isComplex = false;
+    int dis = (b * b) - (4 * a * c);
+    cout << "dis: " << dis << endl;
+
+    if (dis > 0)
     {
-        cout << "Invalid input: According to concept of Permutation r should be less than or equal to n." << endl;
-        return 0;
+        cout << "Roots are real and Different" << endl;
+        root1 = (-b + sqrt(dis)) / 2 * a;
+        root2 = (-b - sqrt(dis)) / 2 * a;
     }
-    int perms = (calFactorialRecur(noOfPeople) / (calFactorialRecur(noOfPeople - seats)));
+    else if (dis == 0)
+    {
+        cout << "Roots are real and same" << endl;
+        root1 = (-b + sqrt(dis)) / 2 * a;
+    }
+    else
+    {
+        cout << "Roots are real and complex" << endl;
+        root1 = (-b / (2 * a));
+        root2 = (-b / (2 * a));
+        isComplex = true;
+    }
 
-    cout << perms;
+    if (isComplex)
+        cout << root1 + "+i" << sqrt(dis) << " " << root2 + "-i" << sqrt(dis);
+    else
+        cout << root1 << " " << root2;
 }
