@@ -3,21 +3,21 @@
 enum class VehicleType
 {
     CAR,
-    MOTROCYCLE,
+    MOTORCYCLE,
     TRUCK,
     BUS
 };
 
 class Vehicle
 {
-    std::string licensePlate;
+    std::string licenseNum;
     VehicleType type;
     std::string color;
 
 public:
-    Vehicle(std::string licenselate, VehicleType type, std::string color);
-    std::string getLicencePlate();
-    std::string getColor();
-    VehicleType getType();
-    void displayInfo();
+    Vehicle(std::string licenseNum, VehicleType type, std::string color);
+    virtual std::string getLicenseNum();
+    virtual std::string getColor();
+    virtual VehicleType getType() const;
+    virtual void displayInfo();
 };
