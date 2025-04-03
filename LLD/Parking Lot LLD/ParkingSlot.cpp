@@ -6,6 +6,7 @@ ParkingSlot::ParkingSlot(int slotNumber, SlotType type)
 {
     this->slotNumber = slotNumber;
     this->type = type;
+    this->available = true;
 }
 
 int ParkingSlot::getSlotNumber()
@@ -37,11 +38,13 @@ bool ParkingSlot::canFitVehicle(const Vehicle *vehicle)
     {
     case VehicleType::MOTORCYCLE:
         return true;
+        break;
     case VehicleType::CAR:
-        return this->getType() != SlotType::COMPACT;
+        return type != SlotType::COMPACT;
+        break;
     case VehicleType::BUS:
     case VehicleType::TRUCK:
-        return this->getType() == SlotType::LARGE;
+        return type == SlotType::LARGE;
     }
 
     return false;
@@ -49,9 +52,13 @@ bool ParkingSlot::canFitVehicle(const Vehicle *vehicle)
 
 bool ParkingSlot::parkVehicle(Vehicle *vehicle)
 {
-    if (!available || !canFitVehicle(vehicle))
+    // cout << "park vehicle called" << endl;
+    if (!this->available || !this->canFitVehicle(vehicle))
+    {
+        cout << "Slot not available" << endl;
         return false;
-
+    }
+    cout << "Slot avaialble\n";
     this->vehicle = vehicle;
     available = false;
     return true;
@@ -71,15 +78,18 @@ Vehicle *ParkingSlot::removeVehicle()
 
 void ParkingSlot::displayInfo()
 {
-    cout << "Slot " << slotNumber << " (";
+    cout << "\nSlot " << slotNumber << " (";
     switch (type)
     {
     case SlotType::COMPACT:
         cout << "Compact";
+        break;
     case SlotType::REGULAR:
         cout << "Regular";
+        break;
     case SlotType::LARGE:
         cout << "Large";
+        break;
     }
     cout << "): " << (available ? "Available" : "Occupied");
     if (vehicle)

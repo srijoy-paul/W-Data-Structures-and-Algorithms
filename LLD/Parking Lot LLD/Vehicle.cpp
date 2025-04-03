@@ -28,10 +28,13 @@ void Vehicle::displayInfo()
     {
     case VehicleType::CAR:
         cout << "Car";
+        break;
     case VehicleType::MOTORCYCLE:
         cout << "MotorCycle";
+        break;
     case VehicleType::TRUCK:
         cout << "Truck";
+        break;
     case VehicleType::BUS:
         cout << "Bus";
     }
