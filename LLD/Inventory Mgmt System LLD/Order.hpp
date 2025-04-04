@@ -6,7 +6,8 @@
 
 class Order
 {
-    std::map<Product, int> orderList;
+public:
+    std::map<Product *, int> orderList;
 };
 
 #endif

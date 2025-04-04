@@ -7,13 +7,14 @@
 
 class InventorySystem
 {
-    std::map<std::string, Product> productList;
-    std::map<std::string, Unit> locationList;
+    static std::map<std::string, Product> productList;
+    static std::map<std::string, Unit> locationList;
 
 public:
-    virtual void addProduct(Product product);
-    virtual void placeUnit(Unit unit);
-    virtual std::map<std::string, Unit> getShelvesStatus();
+    static void addProduct(Product product);
+    static void placeUnit(Unit unit);
+    static void removeUnit(Product prod);
+    static std::map<std::string, Unit> getShelvesStatus();
 };
 
 #endif

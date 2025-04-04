@@ -14,5 +14,5 @@ void InventorySystem::placeUnit(Unit unit)
 
 map<std::string, Unit> InventorySystem::getShelvesStatus()
 {
-    return this->locationList;
+    return InventorySystem::locationList;
 }

@@ -11,10 +11,14 @@ class Product
     int price;
     std::string descp;
     double weight;
+    int quantity;
     SIZE size;
 
 public:
+    Product(std::string id, int price, double wght, int qty, SIZE sz);
     virtual std::string getId();
+    int getQuantity() const;
+    void setQuantity(int qty);
 };
 
 #endif
